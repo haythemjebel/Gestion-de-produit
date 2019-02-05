@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Drop</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous" />
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{index}">All Produits</a></li>
+				<li><a th:href="@{find}">Chercher</a></li>
+				<li><a th:href="@{form}">Add</a></li>
+				<li><a th:href="@{supprimer}">Delete</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">User <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{ajouter}">Add</a></li>
+<!-- 						<li><a th:href="@{modifier}">Update</a></li>
+ -->						<li><a th:href="@{drop}">Delete</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{logout}" th:text="${#session.getAttribute('name')}"></a></li>
+			</ul>>
+		</div>
+	</nav>
+	<div class="container">
+		<form th:action="@{del}" method="get">
+			<div class="form-group text-center">
+				<label>ID :</label> <input type="text" name="id"
+					class="form-control" th:value="${id}" placeholder="ID">
+				<button class=" btn btn-danger">Delete</button>
+			</div>
+		</form>
+	</div>
+
+	<footer class="navbar-fixed-bottom text-center py-3">
+		<div class="container">
+			<p>Copyright@JEBEL</p>
+		</div>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layout">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script><title>Form</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{index}">All Produits</a></li>
+				<li><a th:href="@{find}">Chercher</a></li>
+				<li><a th:href="@{form}">Add</a></li>
+				<li><a th:href="@{supprimer}">Delete</a></li>	
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">User <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{ajouter}">Add</a></li>
+<!-- 						<li><a th:href="@{modifier}">Update</a></li>
+ -->						<li><a th:href="@{drop}">Delete</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{logout}" th:text="${#session.getAttribute('name')}"></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container col-md-6 col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">Add produit</div>
+			<div class="panel-body">
+				<form th:action="@{save}" method="post">
+					<div class="form-group">
+						<label>Designation</label> <input class="form-control"
+							th:value="${produit.designation}" type="text" name="designation" />
+						<span th:errors="${produit.designation}"></span>
+					</div>
+					<div class="form-group">
+						<label>Prix</label> <input class="form-control"
+							th:value="${produit.prix}" type="text" name="prix" /> <span
+							th:errors="${produit.prix}"></span>
+					</div>
+					<div class="form-group">
+						<label>Quantite</label> <input class="form-control"
+							th:value="${produit.quantite}" type="text" name="quantite" /> <span
+							th:errors="${produit.quantite}"></span>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer class="navbar-fixed-bottom text-center py-3">
+		<div class="container">
+			<p>Copyright@JEBEL</p>
+		</div>
+	</footer>
+</body>
+</html>

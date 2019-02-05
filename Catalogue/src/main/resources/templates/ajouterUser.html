@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<title>ADD</title>
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a th:href="@{index}">All Produits</a></li>
+				<li><a th:href="@{find}">Chercher</a></li>
+				<li><a th:href="@{form}">Add</a></li>
+				<li><a th:href="@{supprimer}">Delete</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">User <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a th:href="@{ajouter}">Add</a></li>
+<!-- 						<li><a th:href="@{modifier}">Update</a></li>
+ -->						<li><a th:href="@{drop}">Delete</a></li>
+					</ul></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a th:href="@{logout}"
+					th:text="${#session.getAttribute('name')}"></a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container col-md-6 col-xs-12 col-md-offset-3">
+		<div class="panel panel-primary">
+			<div class="panel-heading">Add User</div>
+			<div class="panel-body">
+				<form th:action="@{enregistre}" method="post">
+
+					<div class="form-group">
+						<label>Username</label> <input class="form-control" type="text"
+							name="username" /> <span th:errors="${users.username}"></span>
+					</div>
+					<div class="form-group">
+						<label>Password</label> <input class="form-control"
+							type="password" name="password" /> <span
+							th:errors="${users.password}"></span>
+					</div>
+					<div class="form-group">
+						<label>Role</label> <input class="form-control" type="text"
+							name="role" /> <span th:errors="${users.Role}"></span>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer class="navbar-fixed-bottom text-center py-3">
+		<div class="container">
+			<p>Copyright@JEBEL</p>
+		</div>
+	</footer>
+</body>
+</html>
